@@ -1,0 +1,40 @@
+q[n_] := Exp[2 Pi I/n];
+d[n_] := q[n]^10 + q[n]^8 + q[n]^2 + 1 + q[n]^-2 + q[n]^-8 + q[n]^-10;
+t[n_] := -(q[n]^2 - 1 + q[n]^-2)/(q[n]^4 + q[n]^-4);
+
+PG2[n_] := d[n]^2 t[n]^5 + 2 d[n] t[n]^5 - 4 d[n] t[n]^4 - d[n] t[n]^3 + 6 d[n] t[n]^2 + 4 d[n] t[n] + d[n] + t[n]^5 - 4 t[n]^4 + t[n]^3 + 7 t[n]^2 - 2
+
+A[n_] := FullSimplify[ (-t[n]^2 + t[n] + 1)/(d[n] t[n] + d[n] + t[n]) ]
+B[n_] := FullSimplify[ (d[n] t[n]^2 + t[n]^2 - 1)/(d[n] t[n] + d[n] + t[n]) ]
+
+brak[alpha_, beta_] := alpha Conjugate[beta] + Conjugate[alpha] beta
+
+equations[alpha_, beta_, gamma_, delta_, n_] := {
+    Norm[alpha]^2 + A[n] Norm[gamma]^2 == 0,
+    d[n] Norm[beta]^2 + brak[alpha + gamma, beta] + A[n] Norm[gamma]^2 == 0,
+    brak[alpha,gamma] + B[n] Norm[gamma]^2 == 0,
+    Norm[delta]^2 + brak[alpha + t[n] gamma, delta] + B[n] Norm[gamma]^2 == 0
+}
+
+eqs[alpha_, beta_, gamma_, delta_, n_] := FullSimplify[ Join[ equations[alpha,beta,gamma,delta,n], equations[beta,alpha,delta,gamma,n] ] ]
+
+(* Exmple: q an 8th root of unity *)
+    (* First assuming a = 0, so b = 1 *)
+
+reducedSolutions[inList_] := (
+    answer = Assuming[ Element[a1|a2|b1|b2|c1|c2|d1|d2, Reals], FullSimplify[inList] ];
+    answer = Reduce[ answer, {a1, a2, b1, b2, c1, c2, d1, d2}, Reals ];
+    answer = Reduce[
+        LogicalExpand[
+            FullSimplify[
+                answer
+            ]
+        ],
+        {a1, a2, b1, b2, c1, c2, d1, d2}
+    ];
+    Return[answer];
+)
+
+solveThis = eqs[0, b1 + I b2, c1 + I c2, d1 + I d2, 8 ];
+(* answerNoA = reducedSolutions[solveThisNoA];*)
+

@@ -1,0 +1,14 @@
+(a < 0 && ((x == 3 && (b == 2*(-a - (Sqrt[3]*Sqrt[a^2])/2) || 
+     b == 2*(-a + (Sqrt[3]*Sqrt[a^2])/2))) || 
+   (x == 4 && (b == Sqrt[2]*(-a - Sqrt[a^2]/Sqrt[2]) || 
+     b == Sqrt[2]*(-a + Sqrt[a^2]/Sqrt[2]))) || 
+   (x == 5 && (b == (-1 + Sqrt[5])*(-a - ((-1 + Sqrt[5])*(1 + Sqrt[5])*
+          Sqrt[-((-1 + (1 + Sqrt[5])^2/16)*a^2)])/4) || 
+     b == (-1 + Sqrt[5])*(-a + ((-1 + Sqrt[5])*(1 + Sqrt[5])*
+          Sqrt[-((-1 + (1 + Sqrt[5])^2/16)*a^2)])/4))) || 
+   (Element[x, Integers] && x >= 7 && 
+    (b == Sec[Pi/x]*(-a - Cos[Pi/x]*Sqrt[-(a^2*(-1 + Cos[Pi/x]^2)*
+            Sec[Pi/x]^2)]) || 
+     b == Sec[Pi/x]*(-a + Cos[Pi/x]*Sqrt[-(a^2*(-1 + Cos[Pi/x]^2)*
+            Sec[Pi/x]^2)]))))) || (x == 6 && a < 0 && 
+  b == (-2*Sqrt[3]*a + Sqrt[3]*Sqrt[a^2])/3)

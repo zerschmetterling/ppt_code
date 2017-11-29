@@ -1,0 +1,42 @@
+equations = {q*v3i^2 + 2*v3r + q*v3r^2 + 2*v3i*v4i + q*v4i^2 + 2*v3r*v4r + q*v4r^2 == 0, 
+ v0i^2 + v0r^2 != 0, v0i - q*v0r*v2i + q*v0i*v2r + (q + v2r)*v3i - v2i*v3r - 
+   (-1 + v0r)*v4i + v0i*v4r == 0, q*v0i^2 + q*v0r^2 + 2*v0i*v3i + q*v3i^2 + 
+   2*(1 + v0r)*v3r + q*v3r^2 == 0, 
+ q + 2*v0i*v2i + q*v2i^2 + 2*(1 + v0r)*v2r + q*v2r^2 == 0, 
+ v0r + q*v0i*v2i + q*v0r*v2r + v2i*v3i + (q + v2r)*v3r + v0i*v4i + 
+   (1 + v0r)*v4r == 0, v0i - (q*v0r + v2r)*v3i + (q*v0i + v2i)*v3r - 
+   (1 + v0r + q*v2r)*v4i + (v0i + q*v2i)*v4r == 0, 
+ v0i - q*v0r*v2i + q*v0i*v2r + v2r*v3i - v2i*v3r - (1 + v0r + q*v3r)*v4i + 
+   (v0i + q*v3i)*v4r == 0, v0r + (q*v0i + v2i)*v3i + (q*v0r + v2r)*v3r + 
+   (v0i + q*v2i)*v4i + (1 + v0r + q*v2r)*v4r == 0, v4i^2 + v4r^2 != 0, 
+ v0r + q*v2r + v2i*v3i + v2r*v3r + (v0i + q*v3i)*v4i + 
+   (1 + v0r + q*v3r)*v4r == 0, q*v0i^2 + q*v0r^2 + 2*v0i*v2i + q*v2i^2 + 
+   2*v0r*v2r + q*v2r^2 + 2*v2i*v4i + 2*v2r*v4r == 0, True, 
+ 2*v0i*v2i + q*v2i^2 + 2*v0r*v2r + q*v2r^2 + 2*v2i*v4i + q*v4i^2 + 
+   2*v2r*v4r + q*v4r^2 == 0, v0r + q*v2r + (q*v0i + v2i)*v3i + 
+   (q*v0r + v2r)*v3r + v0i*v4i + (1 + v0r)*v4r == 0, 
+ -v0i - q*v2i + (q*v0r + v2r)*v3i - (q*v0i + v2i)*v3r + (-1 + v0r)*v4i - 
+   v0i*v4r == 0, -v0i + q*v0r*v2i - q*v0i*v2r - v2r*v3i + v2i*v3r + 
+   (1 + v0r + q*v3r)*v4i - (v0i + q*v3i)*v4r == 0, 
+ v0r + v2i*v3i + (q + v2r)*v3r + (v0i + q*v2i)*v4i + (1 + v0r + q*v2r)*v4r == 
+  0, q*v0i^2 + q*v0r^2 + 2*v0i*v2i + q*v2i^2 + 2*(1 + v0r)*v2r + q*v2r^2 == 
+  0, q + 2*v0i*v3i + q*v3i^2 + 2*(1 + v0r)*v3r + q*v3r^2 == 0, 
+ -v0i + q*v0r*v2i - q*v0i*v2r - (q + v2r)*v3i + v2i*v3r + (-1 + v0r)*v4i - 
+   v0i*v4r == 0, v0i + q*v2i - v2r*v3i + v2i*v3r + (1 + v0r + q*v3r)*v4i - 
+   (v0i + q*v3i)*v4r == 0, v0i + (q + v2r)*v3i - v2i*v3r + 
+   (1 + v0r + q*v2r)*v4i - (v0i + q*v2i)*v4r == 0, 
+ -v0i - (q + v2r)*v3i + v2i*v3r - (1 + v0r + q*v2r)*v4i + 
+   (v0i + q*v2i)*v4r == 0, -v0i + (q*v0r + v2r)*v3i - (q*v0i + v2i)*v3r + 
+   (1 + v0r + q*v2r)*v4i - (v0i + q*v2i)*v4r == 0, 
+ v0i + q*v2i - (q*v0r + v2r)*v3i + (q*v0i + v2i)*v3r - (-1 + v0r)*v4i + 
+   v0i*v4r == 0, q*v2i^2 + 2*v2r + q*v2r^2 + 2*v2i*v4i + q*v4i^2 + 
+   2*v2r*v4r + q*v4r^2 == 0, q + q*v2i^2 + 2*v2r + q*v2r^2 + 2*v2i*v4i + 
+   2*v2r*v4r == 0, True, q + q*v3i^2 + 2*v3r + q*v3r^2 + 2*v3i*v4i + 
+   2*v3r*v4r == 0, q*v0i^2 + q*v0r^2 + 2*v0i*v3i + q*v3i^2 + 2*v0r*v3r + 
+   q*v3r^2 + 2*v3i*v4i + 2*v3r*v4r == 0, 
+ 2*v0i*v3i + q*v3i^2 + 2*v0r*v3r + q*v3r^2 + 2*v3i*v4i + q*v4i^2 + 
+   2*v3r*v4r + q*v4r^2 == 0, v0r + q*v0i*v2i + q*v0r*v2r + v2i*v3i + 
+   v2r*v3r + (v0i + q*v3i)*v4i + (1 + v0r + q*v3r)*v4r == 0, 
+ -v0i - q*v2i + v2r*v3i - v2i*v3r - (1 + v0r + q*v3r)*v4i + 
+   (v0i + q*v3i)*v4r == 0}                  
+variables = {v0i, v2i, v4i, v3r, v0r, v3i, v2r, v4r}

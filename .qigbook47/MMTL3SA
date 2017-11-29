@@ -1,0 +1,12 @@
+variables= {v2r, v4r, v4i, v3r}
+equations= {q*v3r^2 + q*v4i^2 + 4*v3r*v4r + q*v4r^2 == 0, True, True, 
+ -((2 + q*v2r)*v4i) == 0, (2 + q*v3r)*v4i == 0, 
+ 2*v3r + q*v3r^2 + q*v4i^2 + 2*v3r*v4r + q*v4r^2 == 0, 
+ v2r*v3r + v4i^2 + (2 + q*v2r + q*v3r)*v4r + v4r^2 == 0, 
+ q*v2r + v2r*v3r + v4i^2 + (2 + q*v3r)*v4r + v4r^2 == 0, 
+ q*v2r^2 + q*v4i^2 + 4*v2r*v4r + q*v4r^2 == 0, 
+ q + 2*v3r + q*v3r^2 + 2*v3r*v4r == 0, (q*v2r - q*v3r)*v4i == 0, 
+ -((q*v2r - q*v3r)*v4i) == 0, q + 2*v2r + q*v2r^2 + 2*v2r*v4r == 0, 
+ 2*v2r + q*v2r^2 + q*v4i^2 + 2*v2r*v4r + q*v4r^2 == 0, 
+ (q + v2r)*v3r + v4i^2 + (2 + q*v2r)*v4r + v4r^2 == 0, v4i^2 + v4r^2 != 0, 
+ (2 + q*v2r)*v4i == 0, -((2 + q*v3r)*v4i) == 0}

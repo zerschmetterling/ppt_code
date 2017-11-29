@@ -1,0 +1,33 @@
+
+    r \in Reals
+    a == 1
+    b == I r
+    c == -2 I r
+    d == -2
+
+||
+
+    -4 < r < 0
+    let f[r] = Sqrt[-(r/(4 + r))]
+
+    a == 1
+    b == r - I (r - 1) f[r]
+    c == -10 I f[r]
+    d == 2 I/f[r] b 
+
+||
+
+    -4 < r < 0
+    let f[r] = Sqrt[-(r/(4 + r))]
+
+    a == 1  
+    b == r PM I (r - 1) f[r]
+    c == PM 10 I f[r]
+    d == MP 2 I/f[r] b 
+
+||
+
+    a == 0  
+    b == 1  
+    c == -2  
+    d == 0  
