@@ -18,9 +18,6 @@ equations[alpha_, beta_, gamma_, delta_, n_] := {
 
 eqs[alpha_, beta_, gamma_, delta_, n_] := FullSimplify[ Join[ equations[alpha,beta,gamma,delta,n], equations[beta,alpha,delta,gamma,n] ] ]
 
-(* Exmple: q an 8th root of unity *)
-    (* First assuming a = 0, so b = 1 *)
-
 reducedSolutions[inList_] := (
     answer = Assuming[ Element[a1|a2|b1|b2|c1|c2|d1|d2, Reals], FullSimplify[inList] ];
     answer = Reduce[ answer, {a1, a2, b1, b2, c1, c2, d1, d2}, Reals ];
@@ -35,8 +32,13 @@ reducedSolutions[inList_] := (
     Return[answer];
 )
 
+(* Example: q an 8th root of unity *)
+    (* First assuming a = 0, so b = 1 *)
+
 solveThisNoA = Join[ eqs[0, 1, c1 + I c2, d1 + I d2, 8 ], {a1 == 0, a2 == 0, b1 == 1, b2 == 0} ];
 answerNoA = reducedSolutions[solveThisNoA];
+
+(* also when the morphism has support on the identity *)
 
 solveThisA = Join[ eqs[1, b1 + I b2, c1 + I c2, d1 + I d2, 8  ], {a1 == 1, a2 == 0} ];
 answerA = reducedSolutions[solveThisA];
