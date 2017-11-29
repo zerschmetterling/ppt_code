@@ -1,0 +1,47 @@
+d[sign_] := (3 + sign Sqrt[13])/2 (* plusminus *)
+t[sign_] := FullSimplify[-2/3 d[sign] + 5/3] (* plusminus *)
+
+A[sign_] := FullSimplify[ (-t[sign]^2 + t[sign] + 1)/(d[sign] t[sign] + d[sign] + t[sign]) ]
+B[sign_] := FullSimplify[ (d[sign] t[sign]^2 + t[sign]^2 - 1)/(d[sign] t[sign] + d[sign] + t[sign]) ]
+
+brak[a_, b_] := a Conjugate[b] + Conjugate[a] b
+
+equations[alpha_, beta_, gamma_, delta_, sign_] := {
+    Norm[alpha]^2 + A[sign] Norm[gamma]^2 != 0,
+    d[sign] Norm[beta]^2 + brak[alpha + gamma, beta] + A[sign] Norm[gamma]^2 == 0,
+    brak[alpha,gamma] + B[sign] Norm[gamma]^2 == 0,
+    Norm[delta]^2 + brak[alpha + t[sign] gamma, delta] + B[sign] Norm[gamma]^2 == 0
+}
+
+eqs[alpha_, beta_, gamma_, delta_, sign_] := FullSimplify[ Join[ equations[alpha,beta,gamma,delta,sign], equations[beta,alpha,delta,gamma,sign] ] ]
+
+(* This shows alpha = 0 is not possible for +Sqrt[13] *)
+
+eqn = eqs[0,beta,gamma,delta,1];
+Reduce[eqn]
+
+(* we therefore set alpha = 1 *)
+
+solveThis = Join[ eqs[1, b1 + I b2, c1 + I c2, d1 + I d2, 1], {a1 == 1, a2 == 0} ];
+
+answer = Assuming[ Element[a1|a2|b1|b2|c1|c2|d1|d2, Reals], FullSimplify[solveThis] ];
+answer = LogicalExpand[ Reduce[ answer, {a1, a2, b1, b2, c1, c2, d1, d2}, Reals ] ];
+
+numericalAnswer = N[answer, 50];
+
+(*
+    solutions now can be found by finding the nearest algebraic numbers to the coefficients
+    and checking whether it pans out
+
+    We now check one solution
+*)
+
+
+alpha = 4/Sqrt[3];
+beta = d[1]/Sqrt[3] - I Sqrt[5 - d[1]];
+gamma = -2 Sqrt[3] (d[1] + 1) + I 2 Sqrt[ 5d[1] + 2];
+delta = -3 Sqrt[3] d[1] + I Sqrt[5 - d[1]];
+
+eqn = eqs[a1, b1, c1, d1, 1]/.{a1->alpha, b1->beta, c1->gamma, d1->delta};
+FullSimplify[eqn]
+
