@@ -16,7 +16,17 @@ equations[alpha_, beta_, gamma_, delta_, n_] := {
     Norm[delta]^2 + brak[alpha + t[n] gamma, delta] + B[n] Norm[gamma]^2 == 0
 }
 
-eqs[alpha_, beta_, gamma_, delta_, n_] := FullSimplify[ Join[ equations[alpha,beta,gamma,delta,n], equations[beta,alpha,delta,gamma,n] ] ]
+eqs[alpha_, beta_, gamma_, delta_, n_] := FullSimplify[ 
+    (*    Join[ *)
+           Join[equations[alpha,beta,gamma,delta,n], equations[beta,alpha,delta,gamma,n]] (*,
+           Join[
+                equations[Conjugate[alpha],Conjugate[beta],Conjugate[gamma],Conjugate[delta],n], 
+                equations[Conjugate[beta],Conjugate[alpha],Conjugate[delta],Conjugate[gamma],n]]
+        ]*)
+    ]
+
+(* Exmple: q an 8th root of unity *)
+    (* First assuming a = 0, so b = 1 *)
 
 reducedSolutions[inList_] := (
     answer = Assuming[ Element[a1|a2|b1|b2|c1|c2|d1|d2, Reals], FullSimplify[inList] ];
@@ -32,16 +42,12 @@ reducedSolutions[inList_] := (
     Return[answer];
 )
 
-(* Example: q an 8th root of unity *)
-    (* First assuming a = 0, so b = 1 *)
-
 solveThisNoA = Join[ eqs[0, 1, c1 + I c2, d1 + I d2, 8 ], {a1 == 0, a2 == 0, b1 == 1, b2 == 0} ];
 answerNoA = reducedSolutions[solveThisNoA];
 
-(* also when the morphism has support on the identity *)
-
 solveThisA = Join[ eqs[1, b1 + I b2, c1 + I c2, d1 + I d2, 8  ], {a1 == 1, a2 == 0} ];
 answerA = reducedSolutions[solveThisA];
+
 
 (* checking one of the solutions *)
 f[r_] := Sqrt[-r/(4+r)];
@@ -50,6 +56,11 @@ alpha = 1;
 beta = r + I (r - 1) f[r];
 gamma = + I 10 f[r];
 delta = - I 2/f[r] beta;
+betaCC = r - I (r - 1) f[r];
+gammaCC = - I 10 f[r];
+deltaCC = + I 2/f[r] betaCC;
 
 eqn = eqs[a1, b1, c1, d1, 8]/.{a1->alpha, b1->beta, c1->gamma, d1->delta};
-Assuming[ -4 < r < 0, FullSimplify[eqn] ]
+eqnCC = eqs[a1, b1, c1,d1, 8]/.{a1->alpha, b1->betaCC, c1->gammaCC, d1->deltaCC};
+Print[Assuming[ -4 < r < 0, FullSimplify[eqnCC] ] ];
+Print[Assuming[ -4 < r < 0, FullSimplify[eqn] ] ];
